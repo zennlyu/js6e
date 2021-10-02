@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>HELLO_REACT</title>
+</head>
+<body>
+    <!--准备好一个容器-->
+    <div id = 'test'></div>
+
+    <!--引入 react 核心库-->
+    <script type = 'text/javascript' src="../js/react.development.js"></script>
+    <!--引入 react 核心库-->
+    <script type = 'text/javascript' src="../js/react-dom.development.js"></script>
+    <!--引入 react 核心库-->
+    <script type = 'text/javascript' src="../js/babel.min.js"></script>
+
+    <script type="text/babel">
+        class Weather extends React.Component {
+            constructor(props) {
+                'use strict'
+                super(props);
+                this.state = {isHot:false};
+                this.changeWeather = this.changeWeather.bind(this);
+            }
+            render() {
+                const {isHot} = this.state;
+                return <h1 onClick={this.changeWeather}> 今天天气很{isHot ? "炎热" : "凉爽"}</h1>
+            }
+
+            changeWeather() {
+                const isHot = this.state.isHot;
+                this.setState({isHot:!isHot})
+            }
+        }
+
+        ReactDOM.render(<Weather/>, document.getElementById('test'));
+    </script>
+</body>
+</html>
