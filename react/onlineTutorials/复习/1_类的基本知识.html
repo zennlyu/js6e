@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Document</title>
+</head>
+<body>
+    <div id = 'title'></div>
+    <script>
+        /***
+            1. 类中的构造器不是必须要写的，要对实例进行一些初始化的操作，如添加指定属性时オ写。
+            2. 如果 A 类继承了 B 类，且 A 类中写了构造器，那么 A 类构造器中的 super 是必须要调用的。
+            3. 类中所定义的方法，都放在了类的原型对象上，供实例去使用。
+        ***/
+        class Person {
+            // 构造器方法
+            constructor(name, age) {
+                // 构造器中的 this 是谁？一类的实例对象
+                this.name = name;
+                this.age = age;
+            }
+
+            //一般方法
+            speak(){
+                // speak 方法放在了哪里？一类的原型对象上，供实例使用
+                // 通过 Person'实例调用 speak 时，speak 中的 this 就是 Person 实例
+                console.log(`I am ${this.name}. My age is ${this.age}`)
+            }
+        }
+
+        const p1 = new Person('tom', 18);
+
+        class Student extends Person {
+            // 重写方法
+            constructor(name, age, grade) {
+                super(name, age);
+                this.grade = grade;
+                this.school = '尚硅谷';
+            }
+
+            speak() {
+                console.log(`My name is ${this.name}. My age is ${this.age}. I am at ${this.grade} grade.`);
+                this.study()
+            }
+
+            study() {
+                // study 方法放在了哪里？一类的原型对象上，供实例使用
+                // 通过 Student 实例调用 study 时，study 中的 this 就是 Student 实例
+                console.log("I am study hard.");
+            }
+        }
+
+        const stu = new Student('tom',18,'Se')
+        stu.speak()
+
+        console.log(p1)
+    </script>
+</body>
+</html>
