@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Document</title>
+</head>
+<body>
+    <button id="btn1">按钮1</button>
+    <button id="btn2">按钮2</button>
+    <button>按钮3</button>
+
+    <script>
+        const btn1 = document.getElementById('btn1');
+        btn1 = addEventListner('click', () => {
+            alert('按钮1被点击了')
+        })
+
+        const btn2 = document.getElementById('btn1');
+        btn2.onClick = () => {
+            alert("按钮2被点击了");
+        }
+
+        funtion demo(){
+            alert("Button 3 has been clicked")
+        }
+    </script>
+</body>
+</html>
